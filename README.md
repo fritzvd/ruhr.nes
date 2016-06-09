@@ -1,14 +1,14 @@
-# emesh
-This will be my first attempt at creating a NES game. Most of what I am doing
-is being taught to my by http://nesdoug.com
+# RuhrJS talk
 
-# Storyline
-Emesh needs to bring his sheep back alive. Help him out.
+This is a talk I'm about to do at ruhrjs. This repo is based on my other repo emesh.
+A sort of boilerplate on starting to program NES games in C with CC65.
 
-# Installation and getting started.
-To run the contents of the package and to create the `.nes` ROM you need the cc65 package. Which can compile the C-code to assembler and make `.nes` ROM out of
-assembler code and binary sprite files.
+Talk outline.
+# Programming the NES
 
-The easiest method on a debian-like (e.g. ubuntu) is to add the repository to your sources list.
-The instructions can be found here:
-http://www.trikaliotis.net/debian
+## Fun facts
+1.79 MHz
+256 x 240 (cropped to 224) pixels
+64 colors (of which 8 are black)
+The nes stands out in video game history as a remarkable device.
+Programming the NES mea

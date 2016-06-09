@@ -33,7 +33,7 @@ function createTiles () {
 
 function nameTables () {
   nestmx('gfx/title.tmx', 'src/title.h')
-  nestmx('gfx/level.tmx', 'src/level.h')
+  nestmx('gfx/slide.tmx', 'src/slide.h')
 }
 
 function make () {
