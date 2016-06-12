@@ -26,7 +26,7 @@
 	.import		_vram_put
 	.import		_vram_unrle
 	.export		_title
-	.export		_slide
+	.export		_slide_attributes
 	.export		_currentSlide
 	.export		_i
 	.export		_index4
@@ -160,11 +160,11 @@ _collisionState:
 	.byte	$00
 _screens:
 	.addr	_title
-	.addr	_slide
+	.addr	_slide_attributes
 _slide_1:
-	.addr	L0172
-	.addr	L0174
-	.addr	L0176
+	.addr	L016D
+	.addr	L016F
+	.addr	L0171
 _pal_item:
 	.byte	$00
 
@@ -322,113 +322,108 @@ _title:
 	.byte	$8C
 	.byte	$01
 	.byte	$00
-_slide:
+_slide_attributes:
 	.byte	$01
-	.byte	$04
-	.byte	$01
-	.byte	$FE
-	.byte	$04
+	.byte	$00
 	.byte	$01
 	.byte	$FE
-	.byte	$04
+	.byte	$00
 	.byte	$01
 	.byte	$FE
-	.byte	$04
+	.byte	$00
+	.byte	$01
+	.byte	$FE
+	.byte	$00
 	.byte	$01
 	.byte	$3D
 	.byte	$30
 	.byte	$31
 	.byte	$32
 	.byte	$33
-	.byte	$34
-	.byte	$04
+	.byte	$00
 	.byte	$01
-	.byte	$1A
+	.byte	$0C
+	.byte	$A3
+	.byte	$00
+	.byte	$01
+	.byte	$0D
 	.byte	$40
 	.byte	$41
 	.byte	$42
 	.byte	$43
 	.byte	$44
-	.byte	$04
-	.byte	$A0
-	.byte	$A1
-	.byte	$A1
-	.byte	$A2
-	.byte	$04
+	.byte	$00
 	.byte	$01
-	.byte	$03
-	.byte	$A2
-	.byte	$A1
-	.byte	$A2
-	.byte	$04
+	.byte	$0B
+	.byte	$B0
+	.byte	$00
 	.byte	$01
-	.byte	$04
-	.byte	$A2
-	.byte	$01
-	.byte	$02
-	.byte	$04
-	.byte	$01
-	.byte	$06
+	.byte	$0D
 	.byte	$50
 	.byte	$51
 	.byte	$52
 	.byte	$53
 	.byte	$54
-	.byte	$04
-	.byte	$B0
-	.byte	$B1
-	.byte	$B2
-	.byte	$B3
-	.byte	$04
-	.byte	$04
+	.byte	$A0
+	.byte	$A3
+	.byte	$A2
 	.byte	$00
-	.byte	$00
-	.byte	$B1
-	.byte	$B3
-	.byte	$B3
-	.byte	$04
 	.byte	$01
 	.byte	$03
+	.byte	$A3
+	.byte	$A1
+	.byte	$A0
 	.byte	$00
-	.byte	$B1
-	.byte	$B0
-	.byte	$B3
-	.byte	$04
 	.byte	$01
-	.byte	$06
+	.byte	$04
+	.byte	$A3
+	.byte	$A2
+	.byte	$00
+	.byte	$01
+	.byte	$09
 	.byte	$60
 	.byte	$61
 	.byte	$62
 	.byte	$63
-	.byte	$64
-	.byte	$04
+	.byte	$00
 	.byte	$B0
-	.byte	$B1
-	.byte	$B2
 	.byte	$B3
-	.byte	$04
-	.byte	$04
+	.byte	$B0
 	.byte	$00
-	.byte	$00
-	.byte	$B1
-	.byte	$B3
-	.byte	$B3
-	.byte	$04
 	.byte	$01
 	.byte	$03
-	.byte	$00
-	.byte	$B1
 	.byte	$B0
-	.byte	$B3
-	.byte	$04
+	.byte	$B2
+	.byte	$B0
+	.byte	$00
 	.byte	$01
-	.byte	$05
+	.byte	$04
+	.byte	$B1
+	.byte	$B3
+	.byte	$00
+	.byte	$01
+	.byte	$08
 	.byte	$F2
 	.byte	$F5
 	.byte	$E8
 	.byte	$F2
 	.byte	$EA
 	.byte	$F3
+	.byte	$00
+	.byte	$01
+	.byte	$32
+	.byte	$30
+	.byte	$00
+	.byte	$00
+	.byte	$88
+	.byte	$AA
+	.byte	$0F
+	.byte	$0C
+	.byte	$03
+	.byte	$0C
+	.byte	$03
+	.byte	$00
+	.byte	$08
 	.byte	$01
 	.byte	$00
 _palSprites:
@@ -454,25 +449,25 @@ _palBG:
 	.byte	$22
 	.byte	$20
 	.byte	$33
-	.byte	$14
+	.byte	$01
 	.byte	$21
 	.byte	$31
 	.byte	$33
-	.byte	$29
-	.byte	$16
-	.byte	$26
+	.byte	$15
+	.byte	$25
+	.byte	$36
 	.byte	$33
-	.byte	$09
-	.byte	$19
-	.byte	$29
-L0172:
+	.byte	$2C
+	.byte	$13
+	.byte	$04
+L016D:
 	.byte	$56,$41,$52,$20,$4E,$45,$53,$4C,$59,$20,$3D,$20,$52,$45,$51,$55
 	.byte	$49,$52,$45,$28,$27,$4E,$45,$53,$4C,$59,$27,$29,$00
-L0176:
+L0171:
 	.byte	$59,$45,$53,$20,$54,$48,$52,$45,$45,$20,$4C,$49,$4E,$45,$53,$00
-L025C:
+L0257:
 	.byte	$50,$52,$45,$53,$53,$20,$53,$54,$41,$52,$54,$00
-L0174:
+L016F:
 	.byte	$48,$45,$4E,$4B,$00
 
 .segment	"BSS"
@@ -538,14 +533,14 @@ _SPRITES:
 ;
 ; if(!*str) break;
 ;
-L017B:	ldy     #$01
+L0176:	ldy     #$01
 	lda     (sp),y
 	sta     ptr1+1
 	dey
 	lda     (sp),y
 	sta     ptr1
 	lda     (ptr1),y
-	beq     L017C
+	beq     L0177
 ;
 ; vram_put((*str++) + STRING_OFFSET);//-0x20 because ASCII code 0x20 is placed in tile 0 of the CHR
 ;
@@ -558,9 +553,9 @@ L017B:	ldy     #$01
 	stx     regsave+1
 	clc
 	adc     #$01
-	bcc     L0184
+	bcc     L017F
 	inx
-L0184:	jsr     stax0sp
+L017F:	jsr     stax0sp
 	ldy     #$00
 	lda     (regsave),y
 	clc
@@ -569,11 +564,11 @@ L0184:	jsr     stax0sp
 ;
 ; while(1)
 ;
-	jmp     L017B
+	jmp     L0176
 ;
 ; }
 ;
-L017C:	jmp     incsp4
+L0177:	jmp     incsp4
 
 .endproc
 
@@ -591,15 +586,15 @@ L017C:	jmp     incsp4
 ; for(i=0;i<16;i++)
 ;
 	lda     #$00
-L02B5:	sta     _i
+L02B0:	sta     _i
 	cmp     #$10
-	bcs     L0188
+	bcs     L0183
 ;
 ; if(!(i&3))
 ;
 	lda     _i
 	and     #$03
-	bne     L02B4
+	bne     L02AF
 ;
 ; bg_bright++;
 ;
@@ -625,14 +620,14 @@ L02B5:	sta     _i
 ;
 ; for(i=0;i<16;i++)
 ;
-L02B4:	lda     _i
+L02AF:	lda     _i
 	clc
 	adc     #$01
-	jmp     L02B5
+	jmp     L02B0
 ;
 ; }
 ;
-L0188:	rts
+L0183:	rts
 
 .endproc
 
@@ -650,9 +645,9 @@ L0188:	rts
 ; for(i=0;i<16;i++)
 ;
 	lda     #$00
-L02B8:	sta     _i
+L02B3:	sta     _i
 	cmp     #$10
-	bcs     L019A
+	bcs     L0195
 ;
 ; ppu_wait_nmi();
 ;
@@ -662,7 +657,7 @@ L02B8:	sta     _i
 ;
 	lda     _i
 	and     #$03
-	bne     L02B7
+	bne     L02B2
 ;
 ; bg_bright--;
 ;
@@ -688,14 +683,14 @@ L02B8:	sta     _i
 ;
 ; for(i=0;i<16;i++)
 ;
-L02B7:	lda     _i
+L02B2:	lda     _i
 	clc
 	adc     #$01
-	jmp     L02B8
+	jmp     L02B3
 ;
 ; }
 ;
-L019A:	rts
+L0195:	rts
 
 .endproc
 
@@ -717,9 +712,9 @@ L019A:	rts
 ; for (i = 0; i < 3; i++) {
 ;
 	lda     #$00
-L02BE:	sta     _i
+L02B9:	sta     _i
 	cmp     #$03
-	bcs     L01AE
+	bcs     L01A9
 ;
 ; put_str(NTADR_A(2, 2 * (int)i + 2), slide_1[(int)i]);
 ;
@@ -727,13 +722,13 @@ L02BE:	sta     _i
 	lda     _i
 	ldx     #$00
 	asl     a
-	bcc     L02BB
+	bcc     L02B6
 	inx
 	clc
-L02BB:	adc     #$02
-	bcc     L01BB
+L02B6:	adc     #$02
+	bcc     L01B6
 	inx
-L01BB:	jsr     aslax4
+L01B6:	jsr     aslax4
 	stx     tmp1
 	asl     a
 	rol     tmp1
@@ -751,10 +746,10 @@ L01BB:	jsr     aslax4
 	lda     _i
 	ldx     #$00
 	asl     a
-	bcc     L02BC
+	bcc     L02B7
 	inx
 	clc
-L02BC:	adc     #<(_slide_1)
+L02B7:	adc     #<(_slide_1)
 	sta     ptr1
 	txa
 	adc     #>(_slide_1)
@@ -775,11 +770,11 @@ L02BC:	adc     #<(_slide_1)
 	lda     _i
 	clc
 	adc     #$01
-	jmp     L02BE
+	jmp     L02B9
 ;
 ; ppu_on_all();
 ;
-L01AE:	jmp     _ppu_on_all
+L01A9:	jmp     _ppu_on_all
 
 .endproc
 
@@ -817,9 +812,9 @@ L01AE:	jmp     _ppu_on_all
 ;
 	lda     #$00
 	sta     _i
-L02C5:	lda     _i
+L02C0:	lda     _i
 	cmp     #$04
-	bcc     L02C6
+	bcc     L02C1
 ;
 ; }
 ;
@@ -827,13 +822,13 @@ L02C5:	lda     _i
 ;
 ; SPRITES[index4] = sprButtonY[i] + buttonY;
 ;
-L02C6:	lda     #<(_SPRITES)
+L02C1:	lda     #<(_SPRITES)
 	ldx     #>(_SPRITES)
 	clc
 	adc     _index4
-	bcc     L01D1
+	bcc     L01CC
 	inx
-L01D1:	sta     ptr1
+L01CC:	sta     ptr1
 	stx     ptr1+1
 	ldy     _i
 	lda     _sprButtonY,y
@@ -852,17 +847,17 @@ L01D1:	sta     ptr1
 	ldx     #>(_SPRITES)
 	clc
 	adc     _index4
-	bcc     L01D8
+	bcc     L01D3
 	inx
-L01D8:	sta     sreg
+L01D3:	sta     sreg
 	stx     sreg+1
 	ldx     #$00
 	lda     _i
 	clc
 	adc     _buttonState4
-	bcc     L02C0
+	bcc     L02BB
 	inx
-L02C0:	sta     ptr1
+L02BB:	sta     ptr1
 	txa
 	clc
 	adc     #>(_sprButtonTile)
@@ -882,9 +877,9 @@ L02C0:	sta     ptr1
 	ldx     #>(_SPRITES)
 	clc
 	adc     _index4
-	bcc     L01DE
+	bcc     L01D9
 	inx
-L01DE:	sta     ptr1
+L01D9:	sta     ptr1
 	stx     ptr1+1
 	ldy     _i
 	lda     _sprButtonAttr,y
@@ -901,9 +896,9 @@ L01DE:	sta     ptr1
 	ldx     #>(_SPRITES)
 	clc
 	adc     _index4
-	bcc     L01E5
+	bcc     L01E0
 	inx
-L01E5:	sta     ptr1
+L01E0:	sta     ptr1
 	stx     ptr1+1
 	ldy     _i
 	lda     _sprButtonX,y
@@ -922,9 +917,9 @@ L01E5:	sta     ptr1
 	ldx     #>(_SPRITES)
 	clc
 	adc     _index4
-	bcc     L01EC
+	bcc     L01E7
 	inx
-L01EC:	sta     ptr1
+L01E7:	sta     ptr1
 	stx     ptr1+1
 	ldy     _i
 	lda     _sprPlayerY,y
@@ -943,17 +938,17 @@ L01EC:	sta     ptr1
 	ldx     #>(_SPRITES)
 	clc
 	adc     _index4
-	bcc     L01F3
+	bcc     L01EE
 	inx
-L01F3:	sta     sreg
+L01EE:	sta     sreg
 	stx     sreg+1
 	ldx     #$00
 	lda     _i
 	clc
 	adc     _playerState4
-	bcc     L02C3
+	bcc     L02BE
 	inx
-L02C3:	sta     ptr1
+L02BE:	sta     ptr1
 	txa
 	clc
 	adc     #>(_sprPlayerTile)
@@ -973,9 +968,9 @@ L02C3:	sta     ptr1
 	ldx     #>(_SPRITES)
 	clc
 	adc     _index4
-	bcc     L01F9
+	bcc     L01F4
 	inx
-L01F9:	sta     ptr1
+L01F4:	sta     ptr1
 	stx     ptr1+1
 	ldy     _i
 	lda     _sprPlayerAttr,y
@@ -992,9 +987,9 @@ L01F9:	sta     ptr1
 	ldx     #>(_SPRITES)
 	clc
 	adc     _index4
-	bcc     L0200
+	bcc     L01FB
 	inx
-L0200:	sta     ptr1
+L01FB:	sta     ptr1
 	stx     ptr1+1
 	ldy     _i
 	lda     _sprPlayerX,y
@@ -1010,7 +1005,7 @@ L0200:	sta     ptr1
 ; for (i = 0; i < 4; ++i) {
 ;
 	inc     _i
-	jmp     L02C5
+	jmp     L02C0
 
 .endproc
 
@@ -1040,7 +1035,7 @@ L0200:	sta     ptr1
 ; if (screen_state > 1) {
 ;
 	cmp     #$02
-	bcc     L0209
+	bcc     L0204
 ;
 ; screen_state = 0;
 ;
@@ -1049,7 +1044,7 @@ L0200:	sta     ptr1
 ;
 ; fade_screen_in();
 ;
-L0209:	jsr     _fade_screen_in
+L0204:	jsr     _fade_screen_in
 ;
 ; ppu_off();
 ;
@@ -1066,10 +1061,10 @@ L0209:	jsr     _fade_screen_in
 	ldx     #$00
 	lda     _screen_state
 	asl     a
-	bcc     L02C8
+	bcc     L02C3
 	inx
 	clc
-L02C8:	adc     #<(_screens)
+L02C3:	adc     #<(_screens)
 	sta     ptr1
 	txa
 	adc     #>(_screens)
@@ -1143,9 +1138,9 @@ L02C8:	adc     #<(_screens)
 ;
 	lda     _joy
 	and     #$08
-	beq     L02CC
+	beq     L02C7
 	lda     _screen_state
-	bne     L02CC
+	bne     L02C7
 ;
 ; fade_screen_out();
 ;
@@ -1163,15 +1158,15 @@ L02C8:	adc     #<(_screens)
 ;
 ; if (joy & PAD_A) {
 ;
-L02CC:	lda     _joy
+L02C7:	lda     _joy
 	and     #$01
-	beq     L02CD
+	beq     L02C8
 ;
 ; if (jump != 1) {
 ;
 	lda     _jump
 	cmp     #$01
-	beq     L02CD
+	beq     L02C8
 ;
 ; jump = 1;
 ;
@@ -1185,9 +1180,9 @@ L02CC:	lda     _joy
 ;
 ; if (joy & PAD_B) {
 ;
-L02CD:	lda     _joy
+L02C8:	lda     _joy
 	and     #$02
-	beq     L02CE
+	beq     L02C9
 ;
 ; playerFast = 1;
 ;
@@ -1196,9 +1191,9 @@ L02CD:	lda     _joy
 ;
 ; if (joy & PAD_LEFT) {
 ;
-L02CE:	lda     _joy
+L02C9:	lda     _joy
 	and     #$40
-	beq     L02CF
+	beq     L02CA
 ;
 ; playerSpeed = -1;
 ;
@@ -1209,7 +1204,7 @@ L02CE:	lda     _joy
 ;
 	lda     _playerFast
 	cmp     #$01
-	bne     L02CF
+	bne     L02CA
 ;
 ; playerSpeed = -2;
 ;
@@ -1218,9 +1213,9 @@ L02CE:	lda     _joy
 ;
 ; if (joy & PAD_RIGHT) {
 ;
-L02CF:	lda     _joy
+L02CA:	lda     _joy
 	and     #$80
-	beq     L0246
+	beq     L0241
 ;
 ; playerSpeed = 1;
 ;
@@ -1231,7 +1226,7 @@ L02CF:	lda     _joy
 ;
 	lda     _playerFast
 	cmp     #$01
-	bne     L0246
+	bne     L0241
 ;
 ; playerSpeed = 2;
 ;
@@ -1240,7 +1235,7 @@ L02CF:	lda     _joy
 ;
 ; }
 ;
-L0246:	rts
+L0241:	rts
 
 .endproc
 
@@ -1295,11 +1290,11 @@ L0246:	rts
 	iny
 	lda     #$22
 	sta     (sp),y
-	lda     #<(L025C)
+	lda     #<(L0257)
 	ldy     #$00
 	sta     (sp),y
 	iny
-	lda     #>(L025C)
+	lda     #>(L0257)
 	sta     (sp),y
 	jsr     _put_str
 ;
@@ -1327,39 +1322,42 @@ L0246:	rts
 ;
 ; for (i = 0; i < 4; i++) {
 ;
-L02D8:	sta     _i
+L02D3:	sta     _i
 	cmp     #$04
-	bcs     L0263
+	bcs     L025E
 ;
-; if (playerX + playerHotSpots[i] == buttonHotspots[i] + buttonX && playerY + playerHotSpots[i+1] == buttonHotspots[i+1]) {
+; if (playerX + playerHotSpots[i] == buttonHotspots[i] + buttonX &&
 ;
 	ldy     _i
 	ldx     #$00
 	lda     _playerHotSpots,y
 	clc
 	adc     _playerX
-	bcc     L02D1
+	bcc     L02CC
 	inx
-L02D1:	sta     ptr1
+L02CC:	sta     ptr1
 	stx     ptr1+1
 	ldy     _i
 	ldx     #$00
 	lda     _buttonHotspots,y
 	clc
 	adc     _buttonX
-	bcc     L02D0
+	bcc     L02CB
 	inx
-L02D0:	cpx     ptr1+1
-	bne     L02D7
+L02CB:	cpx     ptr1+1
+	bne     L02D2
 	cmp     ptr1
-	bne     L02D7
+	bne     L02D2
+;
+; playerY + playerHotSpots[i+1] == buttonHotspots[i+1]) {
+;
 	ldx     #$00
 	lda     _i
 	clc
 	adc     #$01
-	bcc     L0272
+	bcc     L026D
 	inx
-L0272:	sta     ptr1
+L026D:	sta     ptr1
 	txa
 	clc
 	adc     #>(_playerHotSpots)
@@ -1369,17 +1367,17 @@ L0272:	sta     ptr1
 	lda     (ptr1),y
 	clc
 	adc     _playerY
-	bcc     L02D3
+	bcc     L02CE
 	inx
-L02D3:	sta     sreg
+L02CE:	sta     sreg
 	stx     sreg+1
 	ldx     #$00
 	lda     _i
 	clc
 	adc     #$01
-	bcc     L0274
+	bcc     L026F
 	inx
-L0274:	sta     ptr1
+L026F:	sta     ptr1
 	txa
 	clc
 	adc     #>(_buttonHotspots)
@@ -1388,9 +1386,9 @@ L0274:	sta     ptr1
 	ldx     #$00
 	lda     (ptr1),y
 	cpx     sreg+1
-	bne     L02D7
+	bne     L02D2
 	cmp     sreg
-	bne     L02D7
+	bne     L02D2
 ;
 ; collisionState = 1;
 ;
@@ -1399,14 +1397,14 @@ L0274:	sta     ptr1
 ;
 ; for (i = 0; i < 4; i++) {
 ;
-L02D7:	lda     _i
+L02D2:	lda     _i
 	clc
 	adc     #$01
-	jmp     L02D8
+	jmp     L02D3
 ;
 ; }
 ;
-L0263:	rts
+L025E:	rts
 
 .endproc
 
@@ -1425,17 +1423,17 @@ L0263:	rts
 ;
 	lda     _jump
 	cmp     #$01
-	bne     L02DB
+	bne     L02D6
 	lda     _frameNr
 	jsr     pusha0
 	lda     _jumpStart
 	clc
 	adc     #$78
-	bcc     L027C
+	bcc     L0277
 	ldx     #$01
-L027C:	jsr     tosicmp
-	beq     L02DB
-	bcc     L02DB
+L0277:	jsr     tosicmp
+	beq     L02D6
+	bcc     L02D6
 ;
 ; --playerY;
 ;
@@ -1443,16 +1441,16 @@ L027C:	jsr     tosicmp
 ;
 ; if (frameNr > jumpStart + 120) {
 ;
-L02DB:	lda     _frameNr
+L02D6:	lda     _frameNr
 	jsr     pusha0
 	lda     _jumpStart
 	clc
 	adc     #$78
-	bcc     L0281
+	bcc     L027C
 	ldx     #$01
-L0281:	jsr     tosicmp
-	bcc     L027F
-	beq     L027F
+L027C:	jsr     tosicmp
+	bcc     L027A
+	beq     L027A
 ;
 ; jump = 0;
 ;
@@ -1461,11 +1459,11 @@ L0281:	jsr     tosicmp
 ;
 ; if (playerY > playerOriginY) {
 ;
-L027F:	lda     _playerY
+L027A:	lda     _playerY
 	sec
 	sbc     _playerOriginY
-	bcc     L02DC
-	beq     L02DC
+	bcc     L02D7
+	beq     L02D7
 ;
 ; ++playerY;
 ;
@@ -1473,9 +1471,9 @@ L027F:	lda     _playerY
 ;
 ; if (collisionState != 1) {
 ;
-L02DC:	lda     _collisionState
+L02D7:	lda     _collisionState
 	cmp     #$01
-	beq     L0287
+	beq     L0282
 ;
 ; playerX = playerX + playerSpeed;
 ;
@@ -1486,7 +1484,7 @@ L02DC:	lda     _collisionState
 ;
 ; }
 ;
-L0287:	rts
+L0282:	rts
 
 .endproc
 
@@ -1548,11 +1546,11 @@ L0287:	rts
 	lda     #$00
 	jsr     pusha
 	lda     #$0D
-L02DF:	jsr     _pal_col
+L02DA:	jsr     _pal_col
 ;
 ; ppu_wait_nmi();
 ;
-L0299:	jsr     _ppu_wait_nmi
+L0294:	jsr     _ppu_wait_nmi
 ;
 ; ++frameNr;
 ;
@@ -1561,13 +1559,13 @@ L0299:	jsr     _ppu_wait_nmi
 ; if (screen_state == 0) {
 ;
 	lda     _screen_state
-	bne     L02E1
+	bne     L02DC
 ;
 ; if (pal_item < 15) {
 ;
 	lda     _pal_item
 	cmp     #$0F
-	bcs     L02E0
+	bcs     L02DB
 ;
 ; pal_item = pal_item + 1;
 ;
@@ -1576,12 +1574,12 @@ L0299:	jsr     _ppu_wait_nmi
 ;
 ; } else{
 ;
-	jmp     L02DE
+	jmp     L02D9
 ;
 ; pal_item = 0;
 ;
-L02E0:	lda     #$00
-L02DE:	sta     _pal_item
+L02DB:	lda     #$00
+L02D9:	sta     _pal_item
 ;
 ; input();
 ;
@@ -1596,10 +1594,10 @@ L02DE:	sta     _pal_item
 ;
 ; } else if (screen_state == 1) {
 ;
-	jmp     L02DF
-L02E1:	lda     _screen_state
+	jmp     L02DA
+L02DC:	lda     _screen_state
 	cmp     #$01
-	bne     L0299
+	bne     L0294
 ;
 ; game_logic();
 ;
@@ -1607,7 +1605,7 @@ L02E1:	lda     _screen_state
 ;
 ; while(1) {
 ;
-	jmp     L0299
+	jmp     L0294
 
 .endproc
 

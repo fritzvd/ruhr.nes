@@ -3,7 +3,7 @@
 
 #include "base/neslib.h"
 #include "title.h"
-#include "slide.h"
+#include "slide_attributes.h"
 
 
 #define NTADR(x,y) ((0x2000|((y)<<5)|x))
@@ -63,7 +63,7 @@ int slidenr;
 
 const unsigned char* screens[] = {
 	title,
-	slide
+	slide_attributes
 };
 
 unsigned char screen_state; // 0 == title 1 == game 2 == bla
@@ -79,11 +79,11 @@ const unsigned char palSprites[16]={
 	0x33,0x17,0x27,0x07
 };
 
-const unsigned char palBG[16] = {
+const unsigned char palBG[16]={
 	0x33,0x15,0x22,0x20,
-	0x33,0x14,0x21,0x31,
-	0x33,0x29,0x16,0x26,
-	0x33,0x09,0x19,0x29
+	0x33,0x01,0x21,0x31,
+	0x33,0x15,0x25,0x36,
+	0x33,0x2c,0x13,0x04
 };
 
 
@@ -235,7 +235,8 @@ void start_title_screen () {
 void collisions () {
 	collisionState = 0;
 	for (i = 0; i < 4; i++) {
-		if (playerX + playerHotSpots[i] == buttonHotspots[i] + buttonX && playerY + playerHotSpots[i+1] == buttonHotspots[i+1]) {
+		if (playerX + playerHotSpots[i] == buttonHotspots[i] + buttonX &&
+			  playerY + playerHotSpots[i+1] == buttonHotspots[i+1]) {
 			collisionState = 1;
 		}
 	}
@@ -266,6 +267,7 @@ void game_logic () {
 	input();
 	drawSprites();
 	playerMovement();
+	putstr(NTADR_A(20, 20), playerX)
 }
 
 unsigned char pal_item = 0;
