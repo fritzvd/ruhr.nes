@@ -1,21 +1,24 @@
 var gulp = require('gulp')
 var child_process = require('child_process')
 var nestmx = require('nes-tmx')
+var slides = require('./slides.json')
 
 var paths = {
   graphics: 'gfx/tiles.png',
   tilemap: 'gfx/*.tmx',
-  src: 'src/**/*'
+  slides: 'slides.json',
+  src: 'src/main.c',
 }
 
 gulp.task('spriteBuild', createTiles)
 gulp.task('nameTables', nameTables)
-gulp.task('build', make)
+gulp.task('make', make)
 
 gulp.task('dev', function() {
   gulp.watch(paths.graphics, ['spriteBuild']);
   gulp.watch(paths.tilemap, ['nameTables']);
-  gulp.watch(paths.src, ['build']);
+  gulp.watch(paths.slides, ['nameTables', 'make']);
+  gulp.watch(paths.src, ['make']);
 })
 
 function createTiles () {
@@ -33,7 +36,10 @@ function createTiles () {
 
 function nameTables () {
   nestmx('gfx/title.tmx', 'src/title.h')
-  nestmx('gfx/slide.tmx', 'src/slide.h')
+  slides.forEach(function (text, i){
+    nestmx.slidemaker('gfx/slide.tmx', 'src/slide' + i + '.h', text)
+  })
+  // nestmx('gfx/slide.tmx', 'src/slide.h')
 }
 
 function make () {
@@ -48,4 +54,5 @@ function make () {
   return make;
 }
 
+gulp.task('build', ['nameTables', 'spriteBuild', 'make'])
 gulp.task('default', ['build'])

@@ -19,25 +19,27 @@
 	.import		_ppu_wait_nmi
 	.import		_ppu_off
 	.import		_ppu_on_all
-	.import		_pad_poll
 	.import		_pad_trigger
 	.import		_bank_bg
 	.import		_vram_adr
 	.import		_vram_put
 	.import		_vram_unrle
 	.export		_title
-	.export		_slide_attributes
+	.export		_slide0
+	.export		_slide1
+	.export		_slide2
+	.export		_slide3
+	.export		_slide4
+	.export		_attributes_demo
 	.export		_currentSlide
+	.export		_slidenr
+	.export		_slide
 	.export		_i
 	.export		_index4
 	.export		_bg_bright
 	.export		_spr_bright
 	.export		_sprid
 	.export		_frameNr
-	.export		_sprButtonX
-	.export		_sprButtonY
-	.export		_sprButtonTile
-	.export		_sprButtonAttr
 	.export		_sprPlayerX
 	.export		_sprPlayerY
 	.export		_sprPlayerTile
@@ -49,13 +51,11 @@
 	.export		_playerHotSpots
 	.export		_buttonHotspots
 	.export		_collisionState
-	.export		_slidenr
-	.export		_screens
 	.export		_screen_state
 	.export		_SPRITES
 	.export		_palSprites
 	.export		_palBG
-	.export		_slide_1
+	.export		_slides
 	.export		_put_str
 	.export		_fade_screen_in
 	.export		_fade_screen_out
@@ -64,7 +64,6 @@
 	.export		_start_next_screen
 	.export		_input
 	.export		_start_title_screen
-	.export		_collisions
 	.export		_playerMovement
 	.export		_game_logic
 	.export		_pal_item
@@ -72,36 +71,6 @@
 
 .segment	"DATA"
 
-_currentSlide:
-	.byte	$00
-_buttonX:
-	.byte	$14
-_buttonY:
-	.byte	$C8
-_sprButtonX:
-	.byte	$00
-	.byte	$08
-	.byte	$00
-	.byte	$08
-_sprButtonY:
-	.byte	$FF
-	.byte	$FF
-	.byte	$07
-	.byte	$07
-_sprButtonTile:
-	.byte	$04
-	.byte	$05
-	.byte	$14
-	.byte	$15
-	.byte	$06
-	.byte	$07
-	.byte	$16
-	.byte	$17
-_sprButtonAttr:
-	.byte	$03
-	.byte	$03
-	.byte	$03
-	.byte	$03
 _sprPlayerX:
 	.byte	$00
 	.byte	$08
@@ -158,13 +127,6 @@ _buttonHotspots:
 	.byte	$08
 _collisionState:
 	.byte	$00
-_screens:
-	.addr	_title
-	.addr	_slide_attributes
-_slide_1:
-	.addr	L016D
-	.addr	L016F
-	.addr	L0171
 _pal_item:
 	.byte	$00
 
@@ -322,109 +284,1068 @@ _title:
 	.byte	$8C
 	.byte	$01
 	.byte	$00
-_slide_attributes:
+_slide0:
 	.byte	$01
+	.byte	$04
+	.byte	$04
 	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$3E
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$3E
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$3E
+	.byte	$C0
+	.byte	$01
+	.byte	$05
+	.byte	$F3
+	.byte	$F5
+	.byte	$F0
+	.byte	$E5
+	.byte	$F2
+	.byte	$C0
+	.byte	$ED
+	.byte	$E1
+	.byte	$F2
+	.byte	$E9
+	.byte	$EF
+	.byte	$F3
+	.byte	$E3
+	.byte	$F2
+	.byte	$E9
+	.byte	$F0
+	.byte	$F4
+	.byte	$DA
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$26
+	.byte	$C0
+	.byte	$01
+	.byte	$07
+	.byte	$F4
+	.byte	$EF
+	.byte	$EF
+	.byte	$EC
+	.byte	$F3
+	.byte	$C0
+	.byte	$E1
+	.byte	$EE
+	.byte	$E4
+	.byte	$C0
+	.byte	$F4
+	.byte	$E9
+	.byte	$F0
+	.byte	$F3
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$28
+	.byte	$C0
+	.byte	$01
+	.byte	$05
+	.byte	$E6
+	.byte	$EF
+	.byte	$F2
+	.byte	$C0
+	.byte	$EE
+	.byte	$E5
+	.byte	$F3
+	.byte	$C0
+	.byte	$E4
+	.byte	$E5
+	.byte	$F6
+	.byte	$E5
+	.byte	$EC
+	.byte	$EF
+	.byte	$F0
+	.byte	$ED
+	.byte	$E5
+	.byte	$EE
+	.byte	$F4
+	.byte	$00
+	.byte	$04
 	.byte	$01
 	.byte	$FE
-	.byte	$00
+	.byte	$04
 	.byte	$01
-	.byte	$FE
-	.byte	$00
-	.byte	$01
-	.byte	$FE
-	.byte	$00
-	.byte	$01
-	.byte	$3D
+	.byte	$DF
 	.byte	$30
 	.byte	$31
 	.byte	$32
 	.byte	$33
-	.byte	$00
+	.byte	$34
+	.byte	$04
 	.byte	$01
-	.byte	$0C
-	.byte	$A3
-	.byte	$00
-	.byte	$01
-	.byte	$0D
+	.byte	$1A
 	.byte	$40
 	.byte	$41
 	.byte	$42
 	.byte	$43
 	.byte	$44
-	.byte	$00
+	.byte	$04
+	.byte	$A0
+	.byte	$A1
+	.byte	$A1
+	.byte	$A2
+	.byte	$04
 	.byte	$01
-	.byte	$0B
-	.byte	$B0
-	.byte	$00
+	.byte	$03
+	.byte	$A2
+	.byte	$A1
+	.byte	$A2
+	.byte	$04
 	.byte	$01
-	.byte	$0D
+	.byte	$04
+	.byte	$A2
+	.byte	$01
+	.byte	$02
+	.byte	$04
+	.byte	$01
+	.byte	$06
 	.byte	$50
 	.byte	$51
 	.byte	$52
 	.byte	$53
 	.byte	$54
-	.byte	$A0
-	.byte	$A3
-	.byte	$A2
+	.byte	$04
+	.byte	$B0
+	.byte	$B1
+	.byte	$B2
+	.byte	$B3
+	.byte	$04
+	.byte	$04
 	.byte	$00
+	.byte	$00
+	.byte	$B1
+	.byte	$B3
+	.byte	$B3
+	.byte	$04
 	.byte	$01
 	.byte	$03
-	.byte	$A3
-	.byte	$A1
-	.byte	$A0
 	.byte	$00
-	.byte	$01
+	.byte	$B1
+	.byte	$B0
+	.byte	$B3
 	.byte	$04
-	.byte	$A3
-	.byte	$A2
-	.byte	$00
 	.byte	$01
-	.byte	$09
+	.byte	$06
 	.byte	$60
 	.byte	$61
 	.byte	$62
 	.byte	$63
-	.byte	$00
-	.byte	$B0
-	.byte	$B3
-	.byte	$B0
-	.byte	$00
-	.byte	$01
-	.byte	$03
-	.byte	$B0
-	.byte	$B2
-	.byte	$B0
-	.byte	$00
-	.byte	$01
+	.byte	$64
 	.byte	$04
+	.byte	$B0
+	.byte	$B1
+	.byte	$B2
+	.byte	$B3
+	.byte	$04
+	.byte	$04
+	.byte	$00
+	.byte	$00
 	.byte	$B1
 	.byte	$B3
-	.byte	$00
+	.byte	$B3
+	.byte	$04
 	.byte	$01
-	.byte	$08
+	.byte	$03
+	.byte	$00
+	.byte	$B1
+	.byte	$B0
+	.byte	$B3
+	.byte	$04
+	.byte	$01
+	.byte	$05
 	.byte	$F2
 	.byte	$F5
 	.byte	$E8
 	.byte	$F2
 	.byte	$EA
 	.byte	$F3
-	.byte	$00
 	.byte	$01
-	.byte	$32
+	.byte	$00
+_slide1:
+	.byte	$01
+	.byte	$04
+	.byte	$04
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$3E
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$3E
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$3E
+	.byte	$C0
+	.byte	$01
+	.byte	$06
+	.byte	$E8
+	.byte	$E9
+	.byte	$C0
+	.byte	$E9
+	.byte	$C7
+	.byte	$ED
+	.byte	$C0
+	.byte	$E6
+	.byte	$F2
+	.byte	$E9
+	.byte	$F4
+	.byte	$FA
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$2B
+	.byte	$C0
+	.byte	$C0
+	.byte	$EE
+	.byte	$EF
+	.byte	$F4
+	.byte	$C0
+	.byte	$E1
+	.byte	$C0
+	.byte	$E3
+	.byte	$EF
+	.byte	$ED
+	.byte	$F0
+	.byte	$F5
+	.byte	$F4
+	.byte	$E5
+	.byte	$F2
+	.byte	$C0
+	.byte	$F3
+	.byte	$E3
+	.byte	$E9
+	.byte	$E5
+	.byte	$EE
+	.byte	$F4
+	.byte	$E9
+	.byte	$F3
+	.byte	$F4
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$24
+	.byte	$C0
+	.byte	$01
+	.byte	$03
+	.byte	$E4
+	.byte	$EF
+	.byte	$E5
+	.byte	$F3
+	.byte	$C0
+	.byte	$E1
+	.byte	$C0
+	.byte	$EC
+	.byte	$EF
+	.byte	$F4
+	.byte	$C0
+	.byte	$EF
+	.byte	$E6
+	.byte	$C0
+	.byte	$F4
+	.byte	$E8
+	.byte	$E9
+	.byte	$EE
+	.byte	$E7
+	.byte	$F3
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$26
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$3E
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$3E
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$FE
+	.byte	$04
+	.byte	$01
+	.byte	$38
 	.byte	$30
-	.byte	$00
-	.byte	$00
-	.byte	$88
-	.byte	$AA
-	.byte	$0F
-	.byte	$0C
-	.byte	$03
-	.byte	$0C
-	.byte	$03
-	.byte	$00
-	.byte	$08
+	.byte	$31
+	.byte	$32
+	.byte	$33
+	.byte	$34
+	.byte	$04
 	.byte	$01
+	.byte	$1A
+	.byte	$40
+	.byte	$41
+	.byte	$42
+	.byte	$43
+	.byte	$44
+	.byte	$04
+	.byte	$A0
+	.byte	$A1
+	.byte	$A1
+	.byte	$A2
+	.byte	$04
+	.byte	$01
+	.byte	$03
+	.byte	$A2
+	.byte	$A1
+	.byte	$A2
+	.byte	$04
+	.byte	$01
+	.byte	$04
+	.byte	$A2
+	.byte	$01
+	.byte	$02
+	.byte	$04
+	.byte	$01
+	.byte	$06
+	.byte	$50
+	.byte	$51
+	.byte	$52
+	.byte	$53
+	.byte	$54
+	.byte	$04
+	.byte	$B0
+	.byte	$B1
+	.byte	$B2
+	.byte	$B3
+	.byte	$04
+	.byte	$04
+	.byte	$00
+	.byte	$00
+	.byte	$B1
+	.byte	$B3
+	.byte	$B3
+	.byte	$04
+	.byte	$01
+	.byte	$03
+	.byte	$00
+	.byte	$B1
+	.byte	$B0
+	.byte	$B3
+	.byte	$04
+	.byte	$01
+	.byte	$06
+	.byte	$60
+	.byte	$61
+	.byte	$62
+	.byte	$63
+	.byte	$64
+	.byte	$04
+	.byte	$B0
+	.byte	$B1
+	.byte	$B2
+	.byte	$B3
+	.byte	$04
+	.byte	$04
+	.byte	$00
+	.byte	$00
+	.byte	$B1
+	.byte	$B3
+	.byte	$B3
+	.byte	$04
+	.byte	$01
+	.byte	$03
+	.byte	$00
+	.byte	$B1
+	.byte	$B0
+	.byte	$B3
+	.byte	$04
+	.byte	$01
+	.byte	$05
+	.byte	$F2
+	.byte	$F5
+	.byte	$E8
+	.byte	$F2
+	.byte	$EA
+	.byte	$F3
+	.byte	$01
+	.byte	$00
+_slide2:
+	.byte	$01
+	.byte	$04
+	.byte	$04
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$3E
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$3E
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$3E
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$3E
+	.byte	$C0
+	.byte	$01
+	.byte	$06
+	.byte	$E3
+	.byte	$EF
+	.byte	$EE
+	.byte	$F3
+	.byte	$F4
+	.byte	$F2
+	.byte	$E1
+	.byte	$E9
+	.byte	$EE
+	.byte	$F4
+	.byte	$F3
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$2C
+	.byte	$C0
+	.byte	$01
+	.byte	$03
+	.byte	$E4
+	.byte	$EF
+	.byte	$E9
+	.byte	$EE
+	.byte	$E7
+	.byte	$C0
+	.byte	$EE
+	.byte	$E5
+	.byte	$F7
+	.byte	$C0
+	.byte	$F4
+	.byte	$E8
+	.byte	$E9
+	.byte	$EE
+	.byte	$E7
+	.byte	$F3
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$2A
+	.byte	$C0
+	.byte	$01
+	.byte	$0A
+	.byte	$E4
+	.byte	$E5
+	.byte	$ED
+	.byte	$EF
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$FE
+	.byte	$04
+	.byte	$01
+	.byte	$A9
+	.byte	$30
+	.byte	$31
+	.byte	$32
+	.byte	$33
+	.byte	$34
+	.byte	$04
+	.byte	$01
+	.byte	$1A
+	.byte	$40
+	.byte	$41
+	.byte	$42
+	.byte	$43
+	.byte	$44
+	.byte	$04
+	.byte	$A0
+	.byte	$A1
+	.byte	$A1
+	.byte	$A2
+	.byte	$04
+	.byte	$01
+	.byte	$03
+	.byte	$A2
+	.byte	$A1
+	.byte	$A2
+	.byte	$04
+	.byte	$01
+	.byte	$04
+	.byte	$A2
+	.byte	$01
+	.byte	$02
+	.byte	$04
+	.byte	$01
+	.byte	$06
+	.byte	$50
+	.byte	$51
+	.byte	$52
+	.byte	$53
+	.byte	$54
+	.byte	$04
+	.byte	$B0
+	.byte	$B1
+	.byte	$B2
+	.byte	$B3
+	.byte	$04
+	.byte	$04
+	.byte	$00
+	.byte	$00
+	.byte	$B1
+	.byte	$B3
+	.byte	$B3
+	.byte	$04
+	.byte	$01
+	.byte	$03
+	.byte	$00
+	.byte	$B1
+	.byte	$B0
+	.byte	$B3
+	.byte	$04
+	.byte	$01
+	.byte	$06
+	.byte	$60
+	.byte	$61
+	.byte	$62
+	.byte	$63
+	.byte	$64
+	.byte	$04
+	.byte	$B0
+	.byte	$B1
+	.byte	$B2
+	.byte	$B3
+	.byte	$04
+	.byte	$04
+	.byte	$00
+	.byte	$00
+	.byte	$B1
+	.byte	$B3
+	.byte	$B3
+	.byte	$04
+	.byte	$01
+	.byte	$03
+	.byte	$00
+	.byte	$B1
+	.byte	$B0
+	.byte	$B3
+	.byte	$04
+	.byte	$01
+	.byte	$05
+	.byte	$F2
+	.byte	$F5
+	.byte	$E8
+	.byte	$F2
+	.byte	$EA
+	.byte	$F3
+	.byte	$01
+	.byte	$00
+_slide3:
+	.byte	$01
+	.byte	$04
+	.byte	$04
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$3E
+	.byte	$E6
+	.byte	$F5
+	.byte	$EE
+	.byte	$C0
+	.byte	$E6
+	.byte	$E1
+	.byte	$E3
+	.byte	$F4
+	.byte	$F3
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$35
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$3E
+	.byte	$CA
+	.byte	$C0
+	.byte	$D1
+	.byte	$CE
+	.byte	$D7
+	.byte	$D9
+	.byte	$C0
+	.byte	$ED
+	.byte	$E8
+	.byte	$FA
+	.byte	$C0
+	.byte	$D6
+	.byte	$D5
+	.byte	$D0
+	.byte	$D2
+	.byte	$C0
+	.byte	$E3
+	.byte	$F0
+	.byte	$F5
+	.byte	$CF
+	.byte	$E1
+	.byte	$F0
+	.byte	$F5
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$27
+	.byte	$CA
+	.byte	$C0
+	.byte	$D5
+	.byte	$CE
+	.byte	$D3
+	.byte	$D7
+	.byte	$C0
+	.byte	$ED
+	.byte	$E8
+	.byte	$FA
+	.byte	$C0
+	.byte	$F0
+	.byte	$F0
+	.byte	$F5
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$30
+	.byte	$CA
+	.byte	$C0
+	.byte	$D2
+	.byte	$EB
+	.byte	$E2
+	.byte	$C0
+	.byte	$F2
+	.byte	$E1
+	.byte	$ED
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$35
+	.byte	$CA
+	.byte	$C0
+	.byte	$D2
+	.byte	$D5
+	.byte	$D6
+	.byte	$C0
+	.byte	$F8
+	.byte	$C0
+	.byte	$D2
+	.byte	$D4
+	.byte	$D0
+	.byte	$C0
+	.byte	$C8
+	.byte	$D2
+	.byte	$D2
+	.byte	$D4
+	.byte	$C9
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$2D
+	.byte	$CA
+	.byte	$C0
+	.byte	$D6
+	.byte	$D4
+	.byte	$C0
+	.byte	$E3
+	.byte	$EF
+	.byte	$EC
+	.byte	$EF
+	.byte	$F2
+	.byte	$F3
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$33
+	.byte	$CA
+	.byte	$C0
+	.byte	$D3
+	.byte	$C0
+	.byte	$E3
+	.byte	$EF
+	.byte	$EC
+	.byte	$EF
+	.byte	$F2
+	.byte	$F3
+	.byte	$C0
+	.byte	$F0
+	.byte	$E5
+	.byte	$F2
+	.byte	$C0
+	.byte	$F4
+	.byte	$E9
+	.byte	$EC
+	.byte	$E5
+	.byte	$CF
+	.byte	$F3
+	.byte	$F0
+	.byte	$F2
+	.byte	$E9
+	.byte	$F4
+	.byte	$E5
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$24
+	.byte	$CA
+	.byte	$C0
+	.byte	$D8
+	.byte	$C0
+	.byte	$C7
+	.byte	$EB
+	.byte	$E5
+	.byte	$F9
+	.byte	$F3
+	.byte	$C7
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$34
+	.byte	$CA
+	.byte	$C0
+	.byte	$D8
+	.byte	$C0
+	.byte	$F3
+	.byte	$F0
+	.byte	$F2
+	.byte	$E9
+	.byte	$F4
+	.byte	$E5
+	.byte	$F3
+	.byte	$C0
+	.byte	$F0
+	.byte	$E5
+	.byte	$F2
+	.byte	$C0
+	.byte	$F3
+	.byte	$E3
+	.byte	$E1
+	.byte	$EE
+	.byte	$EC
+	.byte	$E9
+	.byte	$EE
+	.byte	$E5
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$26
+	.byte	$CA
+	.byte	$C0
+	.byte	$E3
+	.byte	$E8
+	.byte	$F2
+	.byte	$C0
+	.byte	$E1
+	.byte	$EE
+	.byte	$E4
+	.byte	$C0
+	.byte	$F0
+	.byte	$F2
+	.byte	$E7
+	.byte	$C0
+	.byte	$F2
+	.byte	$EF
+	.byte	$ED
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$66
+	.byte	$30
+	.byte	$31
+	.byte	$32
+	.byte	$33
+	.byte	$34
+	.byte	$04
+	.byte	$01
+	.byte	$1A
+	.byte	$40
+	.byte	$41
+	.byte	$42
+	.byte	$43
+	.byte	$44
+	.byte	$04
+	.byte	$A0
+	.byte	$A1
+	.byte	$A1
+	.byte	$A2
+	.byte	$04
+	.byte	$01
+	.byte	$03
+	.byte	$A2
+	.byte	$A1
+	.byte	$A2
+	.byte	$04
+	.byte	$01
+	.byte	$04
+	.byte	$A2
+	.byte	$01
+	.byte	$02
+	.byte	$04
+	.byte	$01
+	.byte	$06
+	.byte	$50
+	.byte	$51
+	.byte	$52
+	.byte	$53
+	.byte	$54
+	.byte	$04
+	.byte	$B0
+	.byte	$B1
+	.byte	$B2
+	.byte	$B3
+	.byte	$04
+	.byte	$04
+	.byte	$00
+	.byte	$00
+	.byte	$B1
+	.byte	$B3
+	.byte	$B3
+	.byte	$04
+	.byte	$01
+	.byte	$03
+	.byte	$00
+	.byte	$B1
+	.byte	$B0
+	.byte	$B3
+	.byte	$04
+	.byte	$01
+	.byte	$06
+	.byte	$60
+	.byte	$61
+	.byte	$62
+	.byte	$63
+	.byte	$64
+	.byte	$04
+	.byte	$B0
+	.byte	$B1
+	.byte	$B2
+	.byte	$B3
+	.byte	$04
+	.byte	$04
+	.byte	$00
+	.byte	$00
+	.byte	$B1
+	.byte	$B3
+	.byte	$B3
+	.byte	$04
+	.byte	$01
+	.byte	$03
+	.byte	$00
+	.byte	$B1
+	.byte	$B0
+	.byte	$B3
+	.byte	$04
+	.byte	$01
+	.byte	$05
+	.byte	$F2
+	.byte	$F5
+	.byte	$E8
+	.byte	$F2
+	.byte	$EA
+	.byte	$F3
+	.byte	$01
+	.byte	$00
+_slide4:
+	.byte	$01
+	.byte	$04
+	.byte	$04
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$3E
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$3E
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$3E
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$3E
+	.byte	$E3
+	.byte	$EF
+	.byte	$EE
+	.byte	$F3
+	.byte	$F4
+	.byte	$F2
+	.byte	$E1
+	.byte	$E9
+	.byte	$EE
+	.byte	$F4
+	.byte	$F3
+	.byte	$C0
+	.byte	$F2
+	.byte	$E5
+	.byte	$E1
+	.byte	$EC
+	.byte	$EC
+	.byte	$F9
+	.byte	$C0
+	.byte	$F3
+	.byte	$F5
+	.byte	$E3
+	.byte	$EB
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$27
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$3E
+	.byte	$00
+	.byte	$04
+	.byte	$01
+	.byte	$FE
+	.byte	$04
+	.byte	$01
+	.byte	$B8
+	.byte	$30
+	.byte	$31
+	.byte	$32
+	.byte	$33
+	.byte	$34
+	.byte	$04
+	.byte	$01
+	.byte	$1A
+	.byte	$40
+	.byte	$41
+	.byte	$42
+	.byte	$43
+	.byte	$44
+	.byte	$04
+	.byte	$A0
+	.byte	$A1
+	.byte	$A1
+	.byte	$A2
+	.byte	$04
+	.byte	$01
+	.byte	$03
+	.byte	$A2
+	.byte	$A1
+	.byte	$A2
+	.byte	$04
+	.byte	$01
+	.byte	$04
+	.byte	$A2
+	.byte	$01
+	.byte	$02
+	.byte	$04
+	.byte	$01
+	.byte	$06
+	.byte	$50
+	.byte	$51
+	.byte	$52
+	.byte	$53
+	.byte	$54
+	.byte	$04
+	.byte	$B0
+	.byte	$B1
+	.byte	$B2
+	.byte	$B3
+	.byte	$04
+	.byte	$04
+	.byte	$00
+	.byte	$00
+	.byte	$B1
+	.byte	$B3
+	.byte	$B3
+	.byte	$04
+	.byte	$01
+	.byte	$03
+	.byte	$00
+	.byte	$B1
+	.byte	$B0
+	.byte	$B3
+	.byte	$04
+	.byte	$01
+	.byte	$06
+	.byte	$60
+	.byte	$61
+	.byte	$62
+	.byte	$63
+	.byte	$64
+	.byte	$04
+	.byte	$B0
+	.byte	$B1
+	.byte	$B2
+	.byte	$B3
+	.byte	$04
+	.byte	$04
+	.byte	$00
+	.byte	$00
+	.byte	$B1
+	.byte	$B3
+	.byte	$B3
+	.byte	$04
+	.byte	$01
+	.byte	$03
+	.byte	$00
+	.byte	$B1
+	.byte	$B0
+	.byte	$B3
+	.byte	$04
+	.byte	$01
+	.byte	$05
+	.byte	$F2
+	.byte	$F5
+	.byte	$E8
+	.byte	$F2
+	.byte	$EA
+	.byte	$F3
+	.byte	$01
+	.byte	$00
+_attributes_demo:
+	.byte	$04
+	.byte	$00
+	.byte	$01
+	.byte	$00
+	.byte	$01
+	.byte	$00
+	.byte	$01
+	.byte	$00
+	.byte	$01
+	.byte	$01
+	.byte	$03
+	.byte	$02
+	.byte	$04
+	.byte	$16
+	.byte	$03
+	.byte	$02
+	.byte	$03
+	.byte	$02
+	.byte	$03
+	.byte	$02
+	.byte	$03
+	.byte	$03
+	.byte	$02
+	.byte	$04
+	.byte	$FE
+	.byte	$02
+	.byte	$04
+	.byte	$FE
+	.byte	$02
+	.byte	$04
+	.byte	$FE
+	.byte	$02
+	.byte	$04
+	.byte	$99
+	.byte	$54
+	.byte	$5E
+	.byte	$55
+	.byte	$04
+	.byte	$35
+	.byte	$05
+	.byte	$04
+	.byte	$07
+	.byte	$04
 	.byte	$00
 _palSprites:
 	.byte	$33
@@ -460,19 +1381,25 @@ _palBG:
 	.byte	$2C
 	.byte	$13
 	.byte	$04
-L016D:
-	.byte	$56,$41,$52,$20,$4E,$45,$53,$4C,$59,$20,$3D,$20,$52,$45,$51,$55
-	.byte	$49,$52,$45,$28,$27,$4E,$45,$53,$4C,$59,$27,$29,$00
-L0171:
-	.byte	$59,$45,$53,$20,$54,$48,$52,$45,$45,$20,$4C,$49,$4E,$45,$53,$00
-L0257:
+_slides:
+	.addr	_slide0
+	.addr	_slide1
+	.addr	_slide2
+	.addr	_slide3
+	.addr	_slide4
+	.addr	_attributes_demo
+L05CD:
 	.byte	$50,$52,$45,$53,$53,$20,$53,$54,$41,$52,$54,$00
-L016F:
-	.byte	$48,$45,$4E,$4B,$00
 
 .segment	"BSS"
 
 .segment	"ZEROPAGE"
+_currentSlide:
+	.res	2,$00
+_slidenr:
+	.res	2,$00
+_slide:
+	.res	2,$00
 _i:
 	.res	1,$00
 _index4:
@@ -485,13 +1412,9 @@ _sprid:
 	.res	1,$00
 _frameNr:
 	.res	1,$00
+_other_slide:
+	.res	1,$00
 _joy:
-	.res	1,$00
-_joytrig:
-	.res	1,$00
-_buttonState:
-	.res	1,$00
-_buttonState4:
 	.res	1,$00
 _playerState:
 	.res	1,$00
@@ -503,8 +1426,6 @@ _jump:
 	.res	1,$00
 _jumpStart:
 	.res	1,$00
-_slidenr:
-	.res	2,$00
 _screen_state:
 	.res	1,$00
 .segment	"OAM"
@@ -533,14 +1454,14 @@ _SPRITES:
 ;
 ; if(!*str) break;
 ;
-L0176:	ldy     #$01
+L051C:	ldy     #$01
 	lda     (sp),y
 	sta     ptr1+1
 	dey
 	lda     (sp),y
 	sta     ptr1
 	lda     (ptr1),y
-	beq     L0177
+	beq     L051D
 ;
 ; vram_put((*str++) + STRING_OFFSET);//-0x20 because ASCII code 0x20 is placed in tile 0 of the CHR
 ;
@@ -553,9 +1474,9 @@ L0176:	ldy     #$01
 	stx     regsave+1
 	clc
 	adc     #$01
-	bcc     L017F
+	bcc     L0525
 	inx
-L017F:	jsr     stax0sp
+L0525:	jsr     stax0sp
 	ldy     #$00
 	lda     (regsave),y
 	clc
@@ -564,11 +1485,11 @@ L017F:	jsr     stax0sp
 ;
 ; while(1)
 ;
-	jmp     L0176
+	jmp     L051C
 ;
 ; }
 ;
-L0177:	jmp     incsp4
+L051D:	jmp     incsp4
 
 .endproc
 
@@ -586,15 +1507,15 @@ L0177:	jmp     incsp4
 ; for(i=0;i<16;i++)
 ;
 	lda     #$00
-L02B0:	sta     _i
+L0612:	sta     _i
 	cmp     #$10
-	bcs     L0183
+	bcs     L0529
 ;
 ; if(!(i&3))
 ;
 	lda     _i
 	and     #$03
-	bne     L02AF
+	bne     L0611
 ;
 ; bg_bright++;
 ;
@@ -620,14 +1541,14 @@ L02B0:	sta     _i
 ;
 ; for(i=0;i<16;i++)
 ;
-L02AF:	lda     _i
+L0611:	lda     _i
 	clc
 	adc     #$01
-	jmp     L02B0
+	jmp     L0612
 ;
 ; }
 ;
-L0183:	rts
+L0529:	rts
 
 .endproc
 
@@ -645,9 +1566,9 @@ L0183:	rts
 ; for(i=0;i<16;i++)
 ;
 	lda     #$00
-L02B3:	sta     _i
+L0615:	sta     _i
 	cmp     #$10
-	bcs     L0195
+	bcs     L053B
 ;
 ; ppu_wait_nmi();
 ;
@@ -657,7 +1578,7 @@ L02B3:	sta     _i
 ;
 	lda     _i
 	and     #$03
-	bne     L02B2
+	bne     L0614
 ;
 ; bg_bright--;
 ;
@@ -683,14 +1604,14 @@ L02B3:	sta     _i
 ;
 ; for(i=0;i<16;i++)
 ;
-L02B2:	lda     _i
+L0614:	lda     _i
 	clc
 	adc     #$01
-	jmp     L02B3
+	jmp     L0615
 ;
 ; }
 ;
-L0195:	rts
+L053B:	rts
 
 .endproc
 
@@ -709,72 +1630,45 @@ L0195:	rts
 ;
 	jsr     _ppu_off
 ;
-; for (i = 0; i < 3; i++) {
+; bank_bg(1);
 ;
+	lda     #$01
+	jsr     _bank_bg
+;
+; vram_adr(NAMETABLE_A);
+;
+	ldx     #$20
 	lda     #$00
-L02B9:	sta     _i
-	cmp     #$03
-	bcs     L01A9
+	jsr     _vram_adr
 ;
-; put_str(NTADR_A(2, 2 * (int)i + 2), slide_1[(int)i]);
+; vram_unrle(slides[slidenr]);
 ;
-	jsr     decsp4
-	lda     _i
-	ldx     #$00
-	asl     a
-	bcc     L02B6
-	inx
-	clc
-L02B6:	adc     #$02
-	bcc     L01B6
-	inx
-L01B6:	jsr     aslax4
+	lda     _slidenr
+	ldx     _slidenr+1
 	stx     tmp1
 	asl     a
 	rol     tmp1
-	ora     #$02
-	pha
-	lda     tmp1
-	ora     #$20
-	tax
-	pla
-	ldy     #$02
-	sta     (sp),y
-	iny
-	txa
-	sta     (sp),y
-	lda     _i
-	ldx     #$00
-	asl     a
-	bcc     L02B7
-	inx
 	clc
-L02B7:	adc     #<(_slide_1)
+	adc     #<(_slides)
 	sta     ptr1
-	txa
-	adc     #>(_slide_1)
+	lda     tmp1
+	adc     #>(_slides)
 	sta     ptr1+1
 	ldy     #$01
 	lda     (ptr1),y
 	tax
 	dey
 	lda     (ptr1),y
-	sta     (sp),y
-	iny
-	txa
-	sta     (sp),y
-	jsr     _put_str
+	jsr     _vram_unrle
 ;
-; for (i = 0; i < 3; i++) {
+; other_slide = FALSE;
 ;
-	lda     _i
-	clc
-	adc     #$01
-	jmp     L02B9
+	lda     #$00
+	sta     _other_slide
 ;
 ; ppu_on_all();
 ;
-L01A9:	jmp     _ppu_on_all
+	jmp     _ppu_on_all
 
 .endproc
 
@@ -794,13 +1688,6 @@ L01A9:	jmp     _ppu_on_all
 	lda     #$00
 	sta     _index4
 ;
-; buttonState4 = buttonState << 2;
-;
-	lda     _buttonState
-	asl     a
-	asl     a
-	sta     _buttonState4
-;
 ; playerState4 = playerState << 2;
 ;
 	lda     _playerState
@@ -812,114 +1699,23 @@ L01A9:	jmp     _ppu_on_all
 ;
 	lda     #$00
 	sta     _i
-L02C0:	lda     _i
+L0619:	lda     _i
 	cmp     #$04
-	bcc     L02C1
+	bcc     L061A
 ;
 ; }
 ;
 	rts
 ;
-; SPRITES[index4] = sprButtonY[i] + buttonY;
-;
-L02C1:	lda     #<(_SPRITES)
-	ldx     #>(_SPRITES)
-	clc
-	adc     _index4
-	bcc     L01CC
-	inx
-L01CC:	sta     ptr1
-	stx     ptr1+1
-	ldy     _i
-	lda     _sprButtonY,y
-	clc
-	adc     _buttonY
-	ldy     #$00
-	sta     (ptr1),y
-;
-; ++index4;
-;
-	inc     _index4
-;
-; SPRITES[index4] = sprButtonTile[i + buttonState4];
-;
-	lda     #<(_SPRITES)
-	ldx     #>(_SPRITES)
-	clc
-	adc     _index4
-	bcc     L01D3
-	inx
-L01D3:	sta     sreg
-	stx     sreg+1
-	ldx     #$00
-	lda     _i
-	clc
-	adc     _buttonState4
-	bcc     L02BB
-	inx
-L02BB:	sta     ptr1
-	txa
-	clc
-	adc     #>(_sprButtonTile)
-	sta     ptr1+1
-	ldy     #<(_sprButtonTile)
-	lda     (ptr1),y
-	ldy     #$00
-	sta     (sreg),y
-;
-; ++index4;
-;
-	inc     _index4
-;
-; SPRITES[index4] = sprButtonAttr[i];
-;
-	lda     #<(_SPRITES)
-	ldx     #>(_SPRITES)
-	clc
-	adc     _index4
-	bcc     L01D9
-	inx
-L01D9:	sta     ptr1
-	stx     ptr1+1
-	ldy     _i
-	lda     _sprButtonAttr,y
-	ldy     #$00
-	sta     (ptr1),y
-;
-; ++index4;
-;
-	inc     _index4
-;
-; SPRITES[index4] = sprButtonX[i] + buttonX;
-;
-	lda     #<(_SPRITES)
-	ldx     #>(_SPRITES)
-	clc
-	adc     _index4
-	bcc     L01E0
-	inx
-L01E0:	sta     ptr1
-	stx     ptr1+1
-	ldy     _i
-	lda     _sprButtonX,y
-	clc
-	adc     _buttonX
-	ldy     #$00
-	sta     (ptr1),y
-;
-; ++index4;
-;
-	inc     _index4
-;
 ; SPRITES[index4] = sprPlayerY[i] + playerY;
 ;
-	lda     #<(_SPRITES)
+L061A:	lda     #<(_SPRITES)
 	ldx     #>(_SPRITES)
 	clc
 	adc     _index4
-	bcc     L01E7
+	bcc     L0567
 	inx
-L01E7:	sta     ptr1
+L0567:	sta     ptr1
 	stx     ptr1+1
 	ldy     _i
 	lda     _sprPlayerY,y
@@ -938,17 +1734,17 @@ L01E7:	sta     ptr1
 	ldx     #>(_SPRITES)
 	clc
 	adc     _index4
-	bcc     L01EE
+	bcc     L056E
 	inx
-L01EE:	sta     sreg
+L056E:	sta     sreg
 	stx     sreg+1
 	ldx     #$00
 	lda     _i
 	clc
 	adc     _playerState4
-	bcc     L02BE
+	bcc     L0617
 	inx
-L02BE:	sta     ptr1
+L0617:	sta     ptr1
 	txa
 	clc
 	adc     #>(_sprPlayerTile)
@@ -968,9 +1764,9 @@ L02BE:	sta     ptr1
 	ldx     #>(_SPRITES)
 	clc
 	adc     _index4
-	bcc     L01F4
+	bcc     L0574
 	inx
-L01F4:	sta     ptr1
+L0574:	sta     ptr1
 	stx     ptr1+1
 	ldy     _i
 	lda     _sprPlayerAttr,y
@@ -987,9 +1783,9 @@ L01F4:	sta     ptr1
 	ldx     #>(_SPRITES)
 	clc
 	adc     _index4
-	bcc     L01FB
+	bcc     L057B
 	inx
-L01FB:	sta     ptr1
+L057B:	sta     ptr1
 	stx     ptr1+1
 	ldy     _i
 	lda     _sprPlayerX,y
@@ -1005,7 +1801,7 @@ L01FB:	sta     ptr1
 ; for (i = 0; i < 4; ++i) {
 ;
 	inc     _i
-	jmp     L02C0
+	jmp     L0619
 
 .endproc
 
@@ -1020,11 +1816,6 @@ L01FB:	sta     ptr1
 .segment	"CODE"
 
 ;
-; buttonState = 0;
-;
-	lda     #$00
-	sta     _buttonState
-;
 ; screen_state++;
 ;
 	lda     _screen_state
@@ -1035,7 +1826,7 @@ L01FB:	sta     ptr1
 ; if (screen_state > 1) {
 ;
 	cmp     #$02
-	bcc     L0204
+	bcc     L0582
 ;
 ; screen_state = 0;
 ;
@@ -1044,41 +1835,11 @@ L01FB:	sta     ptr1
 ;
 ; fade_screen_in();
 ;
-L0204:	jsr     _fade_screen_in
+L0582:	jsr     _fade_screen_in
 ;
 ; ppu_off();
 ;
 	jsr     _ppu_off
-;
-; vram_adr(NAMETABLE_A);
-;
-	ldx     #$20
-	lda     #$00
-	jsr     _vram_adr
-;
-; vram_unrle(screens[screen_state]);
-;
-	ldx     #$00
-	lda     _screen_state
-	asl     a
-	bcc     L02C3
-	inx
-	clc
-L02C3:	adc     #<(_screens)
-	sta     ptr1
-	txa
-	adc     #>(_screens)
-	sta     ptr1+1
-	ldy     #$01
-	lda     (ptr1),y
-	tax
-	dey
-	lda     (ptr1),y
-	jsr     _vram_unrle
-;
-; render_slide();
-;
-	jsr     _render_slide
 ;
 ; pal_bg(palBG);
 ;
@@ -1092,9 +1853,20 @@ L02C3:	adc     #<(_screens)
 	ldx     #>(_palSprites)
 	jsr     _pal_spr
 ;
+; pal_col(2,palBG[6]); // flickr mental
+;
+	lda     #$02
+	jsr     pusha
+	lda     _palBG+6
+	jsr     _pal_col
+;
 ; drawSprites();
 ;
 	jsr     _drawSprites
+;
+; render_slide();
+;
+	jsr     _render_slide
 ;
 ; ppu_on_all();
 ;
@@ -1113,16 +1885,10 @@ L02C3:	adc     #<(_screens)
 .segment	"CODE"
 
 ;
-; joytrig=pad_trigger(0);
+; joy = pad_trigger(0);
 ;
 	lda     #$00
 	jsr     _pad_trigger
-	sta     _joytrig
-;
-; joy=pad_poll(0);
-;
-	lda     #$00
-	jsr     _pad_poll
 	sta     _joy
 ;
 ; playerFast = 0; // reset
@@ -1138,9 +1904,9 @@ L02C3:	adc     #<(_screens)
 ;
 	lda     _joy
 	and     #$08
-	beq     L02C7
+	beq     L061E
 	lda     _screen_state
-	bne     L02C7
+	bne     L061E
 ;
 ; fade_screen_out();
 ;
@@ -1150,92 +1916,88 @@ L02C3:	adc     #<(_screens)
 ;
 	jsr     _start_next_screen
 ;
-; slidenr = 0;
-;
-	lda     #$00
-	sta     _slidenr
-	sta     _slidenr+1
-;
 ; if (joy & PAD_A) {
 ;
-L02C7:	lda     _joy
+L061E:	lda     _joy
 	and     #$01
-	beq     L02C8
+	beq     L061F
 ;
-; if (jump != 1) {
+; if (slidenr > 0) {
 ;
-	lda     _jump
+	lda     _slidenr
 	cmp     #$01
-	beq     L02C8
+	lda     _slidenr+1
+	sbc     #$00
+	bvs     L05A5
+	eor     #$80
+L05A5:	bpl     L061F
 ;
-; jump = 1;
+; --slidenr;
 ;
-	lda     #$01
-	sta     _jump
+	lda     _slidenr
+	sec
+	sbc     #$01
+	sta     _slidenr
+	bcs     L05A7
+	dec     _slidenr+1
 ;
-; jumpStart = frameNr;
+; other_slide = TRUE;
 ;
-	lda     _frameNr
-	sta     _jumpStart
+L05A7:	lda     #$01
+	sta     _other_slide
 ;
 ; if (joy & PAD_B) {
 ;
-L02C8:	lda     _joy
+L061F:	lda     _joy
 	and     #$02
-	beq     L02C9
+	beq     L0620
 ;
-; playerFast = 1;
+; if (slidenr < MAXSLIDENR) {
 ;
-	lda     #$01
-	sta     _playerFast
+	lda     _slidenr
+	cmp     #$06
+	lda     _slidenr+1
+	sbc     #$00
+	bvc     L05AE
+	eor     #$80
+L05AE:	bpl     L0620
+;
+; ++slidenr;
+;
+	inc     _slidenr
+	bne     L05B0
+	inc     _slidenr+1
+;
+; other_slide = TRUE;
+;
+L05B0:	lda     #$01
+	sta     _other_slide
 ;
 ; if (joy & PAD_LEFT) {
 ;
-L02C9:	lda     _joy
+L0620:	lda     _joy
 	and     #$40
-	beq     L02CA
+	beq     L0621
 ;
 ; playerSpeed = -1;
 ;
 	lda     #$FF
 	sta     _playerSpeed
 ;
-; if (playerFast == 1) {
-;
-	lda     _playerFast
-	cmp     #$01
-	bne     L02CA
-;
-; playerSpeed = -2;
-;
-	lda     #$FE
-	sta     _playerSpeed
-;
 ; if (joy & PAD_RIGHT) {
 ;
-L02CA:	lda     _joy
+L0621:	lda     _joy
 	and     #$80
-	beq     L0241
+	beq     L05B7
 ;
 ; playerSpeed = 1;
 ;
 	lda     #$01
 	sta     _playerSpeed
 ;
-; if (playerFast == 1) {
-;
-	lda     _playerFast
-	cmp     #$01
-	bne     L0241
-;
-; playerSpeed = 2;
-;
-	lda     #$02
-	sta     _playerSpeed
-;
 ; }
 ;
-L0241:	rts
+L05B7:	rts
 
 .endproc
 
@@ -1290,121 +2052,17 @@ L0241:	rts
 	iny
 	lda     #$22
 	sta     (sp),y
-	lda     #<(L0257)
+	lda     #<(L05CD)
 	ldy     #$00
 	sta     (sp),y
 	iny
-	lda     #>(L0257)
+	lda     #>(L05CD)
 	sta     (sp),y
 	jsr     _put_str
 ;
 ; ppu_on_all();
 ;
 	jmp     _ppu_on_all
-
-.endproc
-
-; ---------------------------------------------------------------
-; void __near__ collisions (void)
-; ---------------------------------------------------------------
-
-.segment	"CODE"
-
-.proc	_collisions: near
-
-.segment	"CODE"
-
-;
-; collisionState = 0;
-;
-	lda     #$00
-	sta     _collisionState
-;
-; for (i = 0; i < 4; i++) {
-;
-L02D3:	sta     _i
-	cmp     #$04
-	bcs     L025E
-;
-; if (playerX + playerHotSpots[i] == buttonHotspots[i] + buttonX &&
-;
-	ldy     _i
-	ldx     #$00
-	lda     _playerHotSpots,y
-	clc
-	adc     _playerX
-	bcc     L02CC
-	inx
-L02CC:	sta     ptr1
-	stx     ptr1+1
-	ldy     _i
-	ldx     #$00
-	lda     _buttonHotspots,y
-	clc
-	adc     _buttonX
-	bcc     L02CB
-	inx
-L02CB:	cpx     ptr1+1
-	bne     L02D2
-	cmp     ptr1
-	bne     L02D2
-;
-; playerY + playerHotSpots[i+1] == buttonHotspots[i+1]) {
-;
-	ldx     #$00
-	lda     _i
-	clc
-	adc     #$01
-	bcc     L026D
-	inx
-L026D:	sta     ptr1
-	txa
-	clc
-	adc     #>(_playerHotSpots)
-	sta     ptr1+1
-	ldy     #<(_playerHotSpots)
-	ldx     #$00
-	lda     (ptr1),y
-	clc
-	adc     _playerY
-	bcc     L02CE
-	inx
-L02CE:	sta     sreg
-	stx     sreg+1
-	ldx     #$00
-	lda     _i
-	clc
-	adc     #$01
-	bcc     L026F
-	inx
-L026F:	sta     ptr1
-	txa
-	clc
-	adc     #>(_buttonHotspots)
-	sta     ptr1+1
-	ldy     #<(_buttonHotspots)
-	ldx     #$00
-	lda     (ptr1),y
-	cpx     sreg+1
-	bne     L02D2
-	cmp     sreg
-	bne     L02D2
-;
-; collisionState = 1;
-;
-	lda     #$01
-	sta     _collisionState
-;
-; for (i = 0; i < 4; i++) {
-;
-L02D2:	lda     _i
-	clc
-	adc     #$01
-	jmp     L02D3
-;
-; }
-;
-L025E:	rts
 
 .endproc
 
@@ -1423,17 +2081,17 @@ L025E:	rts
 ;
 	lda     _jump
 	cmp     #$01
-	bne     L02D6
+	bne     L0624
 	lda     _frameNr
 	jsr     pusha0
 	lda     _jumpStart
 	clc
 	adc     #$78
-	bcc     L0277
+	bcc     L05D4
 	ldx     #$01
-L0277:	jsr     tosicmp
-	beq     L02D6
-	bcc     L02D6
+L05D4:	jsr     tosicmp
+	beq     L0624
+	bcc     L0624
 ;
 ; --playerY;
 ;
@@ -1441,16 +2099,16 @@ L0277:	jsr     tosicmp
 ;
 ; if (frameNr > jumpStart + 120) {
 ;
-L02D6:	lda     _frameNr
+L0624:	lda     _frameNr
 	jsr     pusha0
 	lda     _jumpStart
 	clc
 	adc     #$78
-	bcc     L027C
+	bcc     L05D9
 	ldx     #$01
-L027C:	jsr     tosicmp
-	bcc     L027A
-	beq     L027A
+L05D9:	jsr     tosicmp
+	bcc     L05D7
+	beq     L05D7
 ;
 ; jump = 0;
 ;
@@ -1459,11 +2117,11 @@ L027C:	jsr     tosicmp
 ;
 ; if (playerY > playerOriginY) {
 ;
-L027A:	lda     _playerY
+L05D7:	lda     _playerY
 	sec
 	sbc     _playerOriginY
-	bcc     L02D7
-	beq     L02D7
+	bcc     L0625
+	beq     L0625
 ;
 ; ++playerY;
 ;
@@ -1471,9 +2129,9 @@ L027A:	lda     _playerY
 ;
 ; if (collisionState != 1) {
 ;
-L02D7:	lda     _collisionState
+L0625:	lda     _collisionState
 	cmp     #$01
-	beq     L0282
+	beq     L05DF
 ;
 ; playerX = playerX + playerSpeed;
 ;
@@ -1484,7 +2142,7 @@ L02D7:	lda     _collisionState
 ;
 ; }
 ;
-L0282:	rts
+L05DF:	rts
 
 .endproc
 
@@ -1498,10 +2156,6 @@ L0282:	rts
 
 .segment	"CODE"
 
-;
-; collisions();
-;
-	jsr     _collisions
 ;
 ; input();
 ;
@@ -1528,9 +2182,13 @@ L0282:	rts
 .segment	"CODE"
 
 ;
-; frameNr = 0;
+; other_slide = FALSE;
 ;
 	lda     #$00
+	sta     _other_slide
+;
+; frameNr = 0;
+;
 	sta     _frameNr
 ;
 ; start_title_screen();
@@ -1541,31 +2199,32 @@ L0282:	rts
 ;
 	jsr     _ppu_on_all
 ;
-; pal_col(0,0x0d);
+; slidenr = 0;
 ;
 	lda     #$00
+	sta     _slidenr
+	sta     _slidenr+1
+;
+; pal_col(0,0x0d);
+;
 	jsr     pusha
 	lda     #$0D
-L02DA:	jsr     _pal_col
+L0628:	jsr     _pal_col
 ;
 ; ppu_wait_nmi();
 ;
-L0294:	jsr     _ppu_wait_nmi
-;
-; ++frameNr;
-;
-	inc     _frameNr
+L05F4:	jsr     _ppu_wait_nmi
 ;
 ; if (screen_state == 0) {
 ;
 	lda     _screen_state
-	bne     L02DC
+	bne     L05F9
 ;
 ; if (pal_item < 15) {
 ;
 	lda     _pal_item
 	cmp     #$0F
-	bcs     L02DB
+	bcs     L0629
 ;
 ; pal_item = pal_item + 1;
 ;
@@ -1574,12 +2233,12 @@ L0294:	jsr     _ppu_wait_nmi
 ;
 ; } else{
 ;
-	jmp     L02D9
+	jmp     L0627
 ;
 ; pal_item = 0;
 ;
-L02DB:	lda     #$00
-L02D9:	sta     _pal_item
+L0629:	lda     #$00
+L0627:	sta     _pal_item
 ;
 ; input();
 ;
@@ -1592,20 +2251,30 @@ L02D9:	sta     _pal_item
 	ldy     _pal_item
 	lda     _palSprites,y
 ;
-; } else if (screen_state == 1) {
+; } else {
 ;
-	jmp     L02DA
-L02DC:	lda     _screen_state
-	cmp     #$01
-	bne     L0294
+	jmp     L0628
+;
+; render_slide();
+;
+L05F9:	jsr     _render_slide
+;
+; while(!other_slide) {
+;
+	jmp     L060D
 ;
 ; game_logic();
 ;
-	jsr     _game_logic
+L060B:	jsr     _game_logic
+;
+; while(!other_slide) {
+;
+L060D:	lda     _other_slide
+	beq     L060B
 ;
 ; while(1) {
 ;
-	jmp     L0294
+	jmp     L05F4
 
 .endproc
 

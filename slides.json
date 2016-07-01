@@ -1,0 +1,53 @@
+[
+  [
+    "",
+    "",
+    "",
+    "      Super MarioScript:",
+    "        Tools and Tips",
+    "      for nes development"
+  ],
+  [
+    "",
+    "",
+    "",
+    "       Hi I'm Fritz",
+    "  not a computer scientist",
+    "    does a lot of things",
+    "",
+    "",
+    ""
+  ],
+  [
+    "",
+    "",
+    "",
+    "",
+    "       Constraints",
+    "    Doing New Things",
+    "           Demo"
+  ],
+  [
+    "",
+    "Fun Facts",
+    "",
+    "* 1.79 Mhz 6502 CPU/APU",
+    "* 5.37 MHz PPU",
+    "* 2kb ram",
+    "* 256 x 240 (224)",
+    "* 64 colors",
+    "* 3 colors per tile/sprite",
+    "* 8 'keys'",
+    "* 8 sprites per scanline",
+    "* CHR and PRG ROM"
+  ],
+  [
+    "",
+    "",
+    "",
+    "",
+    "Constraints really suck",
+    "",
+    ""
+  ]
+]
